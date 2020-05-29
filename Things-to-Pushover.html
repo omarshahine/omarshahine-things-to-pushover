@@ -1,3 +1,5 @@
+
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -188,6 +190,30 @@
 </head>
 <body>
 <script>
+	function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
     function createPush()
 	{
 			// get the To-Do tile
@@ -197,8 +223,15 @@
 			var url = document.getElementsByClassName("linkbuilder-output")[0].getElementsByTagName('a')[0].href;
 			
 			// create XMLHttpRequest request
-			var xhr = new XMLHttpRequest()
-			xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
+			//var xhr = new XMLHttpRequest()
+
+			//xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
+			
+			var xhr = new createCORSRequest("POST", "https://api.pushover.net/1/messages.json")
+			if (!xhr) {
+  				throw new Error('CORS not supported');
+			}
+			xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
 			var json = '{"token": "aej64vqn71y2ypyrgbwvwxjpgajxem", user:' + getAuthToken('pushover-user-token') + ' ",title": "Things To-Do: ' + name + '", "url": "' + url + '"}';						
 			xhr.send(json)
