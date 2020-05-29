@@ -231,9 +231,10 @@
 			//if (!xhr) {
   			//	throw new Error('CORS not supported');
 			//}
-			xhr.setRequestHeader("Content-Type", "application/json")
-			var json = '{"token": "aej64vqn71y2ypyrgbwvwxjpgajxem", user:' + getAuthToken('pushover-user-token') + ' ",title": "Things To-Do: ' + name + '", "message": "' + name + '", "url": "' + url + '"}';						
-			xhr.send(json)
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+			//var json = '{"token": "aej64vqn71y2ypyrgbwvwxjpgajxem", user:' + getAuthToken('pushover-user-token') + ' ",title": "Things To-Do: ' + name + '", "message": "' + name + '", "url": "' + url + '"}';						
+			var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &device=droid4&title=Backup+finished+-+SQL1&message=Backup+of+database+%22example%22+finished+in+16+minutes.'
+		xhr.send(json)
 	}
 		
 	function saveAuthToken(tokenType)
