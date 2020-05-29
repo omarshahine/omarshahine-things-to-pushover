@@ -1,5 +1,3 @@
-
- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -201,7 +199,6 @@
 			// create XMLHttpRequest request
 			var xhr = new XMLHttpRequest()
 			xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
-			xhr.setRequestHeader('Access-Control-Allow-Origin: *')
 			xhr.setRequestHeader("Content-Type", "application/json")
 			var json = '{"token": "aej64vqn71y2ypyrgbwvwxjpgajxem", user:' + getAuthToken('pushover-user-token') + ' ",title": "Things To-Do: ' + name + '", "url": "' + url + '"}';						
 			xhr.send(json)
