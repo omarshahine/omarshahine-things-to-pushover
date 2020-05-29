@@ -208,7 +208,7 @@
 		//	throw new Error('CORS not supported');
 		//}
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-		var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI(name) + '&message= ' + encodeURI(name) + '&url= ' + encodeURI(url) + ''	
+		var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do') + '&message= ' + encodeURI(name) + '&url= ' + encodeURI(url) + ''	
 		xhr.send(json)
 	}
 		
@@ -281,7 +281,7 @@
 				// Assuming "?post=1234&action=edit"
 				var urlParams = new URLSearchParams(window.location.search);
 		
-				console.log(urlParams.has('auth-token'));
+				//console.log(urlParams.has('auth-token'));
 				if (urlParams.has('auth-token')) // true
 				{
 					document.getElementById("auth-token").value = urlParams.get('auth-token')
@@ -292,7 +292,7 @@
 					document.getElementById("auth-token").value = getAuthToken('auth-token');
 				}
 				
-				console.log(urlParams.has('pushover-user-token'));
+				//console.log(urlParams.has('pushover-user-token'));
 				if (urlParams.has('pushover-user-token')) // true
 				{
 					document.getElementById("pushover-user-token").value = urlParams.get('pushover-user-token')
