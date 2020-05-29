@@ -203,7 +203,7 @@
 
 		xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-		var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do') + '&message=' + encodeURI(name) + '&url=' + encodeURIComponent(url) + '&url_title=Create To-Do'	
+		var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do') + encodeURI(name) + '&message=' + encodeURI(name) + '&url=' + encodeURIComponent(url) + '&url_title=Create To-Do'	
 		xhr.send(json)
 	}
 		
