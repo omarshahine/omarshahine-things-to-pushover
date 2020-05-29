@@ -208,7 +208,7 @@
 		//	throw new Error('CORS not supported');
 		//}
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-		var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do') + '&message= ' + encodeURI(name) + '&url= ' + encodeURI(url) + ''	
+		var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do') + '&message= ' + encodeURI(name) + '&url= ' + encodeURI(url) + '&url_title=Create To-Do'	
 		xhr.send(json)
 	}
 		
