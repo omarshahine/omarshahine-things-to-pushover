@@ -223,14 +223,14 @@
 			var url = document.getElementsByClassName("linkbuilder-output")[0].getElementsByTagName('a')[0].href;
 			
 			// create XMLHttpRequest request
-			//var xhr = new XMLHttpRequest()
+			var xhr = new XMLHttpRequest()
 
-			//xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
+			xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
 			
-			var xhr = new createCORSRequest("POST", "https://api.pushover.net/1/messages.json")
-			if (!xhr) {
-  				throw new Error('CORS not supported');
-			}
+			//var xhr = new createCORSRequest("POST", "https://api.pushover.net/1/messages.json")
+			//if (!xhr) {
+  			//	throw new Error('CORS not supported');
+			//}
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
 			var json = '{"token": "aej64vqn71y2ypyrgbwvwxjpgajxem", user:' + getAuthToken('pushover-user-token') + ' ",title":"Things To-Do: ' + name + '", "url": "' + url + '",message":"Things To-Do: ' + name + '", "url": "' + url + '}';						
 			
