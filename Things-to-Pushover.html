@@ -202,7 +202,7 @@
 	
 			xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-			var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do ') + encodeURI(name) + '&message=' + encodeURI(name) + '&url=' + encodeURIComponent(url) + '&url_title=Create To-Do'	
+			var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do: ') + encodeURI(name) + '&message=' + encodeURI(name) + '&url=' + encodeURIComponent(url) + '&url_title=Create To-Do'	
 			xhr.send(json)
 		}
 			
@@ -240,6 +240,21 @@
 	
 			//console.log('retrieving ' + tokenType + ' :' + authtoken);		
 			return authtoken		
+		}
+		
+		function saveListNames()
+		{
+			var lists = [];
+			var listNames = document.getElementById("listNames").value;
+			console.log(listNames);
+			console.log(JSON.stringify(listNames));
+			localStorage.setItem("lists", JSON.stringify(listNames));
+		}
+		
+		function getListNames()
+		{
+			var listNames = JSON.parse(localStorage.getItem("lists"));
+			return listNames.split("\n")
 		}
 			
 		var linkbuilder = {
@@ -297,6 +312,27 @@
 						document.getElementById("pushover-user-token").value = getAuthToken('pushover-user-token');
 					}
 				
+					document.getElementById("listNames").value = JSON.parse(localStorage.getItem("lists"));
+					
+					let dropdown = document.getElementById('listNamesMenu');
+					dropdown.length = 0;
+
+					let defaultOption = document.createElement('option');
+					defaultOption.text = 'Choose List';
+
+					dropdown.add(defaultOption);
+					dropdown.selectedIndex = 0;
+
+					var data = getListNames();
+					console.log(data)
+					let option;
+					for (let i = 0; i < data.length; i++) {
+						console.log(data[i])
+					  	option = document.createElement('option');
+					  	option.text = data[i];
+					  	dropdown.add(option);
+					}
+				
 				    this.update(commands);				
 				}
 			},
@@ -307,7 +343,7 @@
 					var output = commandElements.eq(i).find('.linkbuilder-output').eq(0);
 					if (output.html() !== link) {
 						/* only change DOM if necessary, otherwise clicking the link doesn’t work directly, while you’re still making changes in a textfield (clicking outside the textfield fires a 'change' event, and if that changes the DOM, the link doesn’t work) */
-						output.html(link);					
+						output.html(link);				
 					}
 				}
 		
@@ -320,7 +356,10 @@
 				var parameters = [];
 				for (var i=0; i<fields.length; ++i) {
 					if (fields[i].value) {
-						parameters.push(fields[i].name+'='+encodeURIComponent(fields[i].value));
+						if (fields[i].value != "Choose List")
+						{
+							parameters.push(fields[i].name+'='+encodeURIComponent(fields[i].value));
+						}
 					}
 				}
 				for (var i=0; i<checkboxes.length; ++i) {
@@ -388,9 +427,16 @@
 										<input autocomplete="off" class="linkbuilder-field" name="tags" placeholder="e.g. home,errand" type="text" />
 									</div>
 									<div class="linkbuilder-row">
-										<label><code>list</code></label> <a class="linkbuilder-help" href="#add-parameter-list">?</a> / <label><code>list-id</code></label> <a class="linkbuilder-help" href="#add-parameter-list-id">?</a> 
+<!--										<label><code>list</code></label> <a class="linkbuilder-help" href="#add-parameter-list">?</a> / <label><code>list-id</code></label> <a class="linkbuilder-help" href="#add-parameter-list-id">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="list" placeholder="project or area title" type="text" />
+										
 										<input autocomplete="off" class="linkbuilder-field" name="list-id" placeholder="or ID" type="text" />
+										-->
+										<label><code>Select list</code></label>
+										<p>
+										 <select id = "listNamesMenu" class="linkbuilder-field" name="list">
+										 </select>
+										 </p>
 									</div>
 									<div class="linkbuilder-row">
 										<label><code>heading</code></label> <a class="linkbuilder-help" href="#add-parameter-heading">?</a> 
@@ -421,6 +467,13 @@
 										<label> 
 										<input class="linkbuilder-checkbox" name="reveal" type="checkbox" />
 										<code>reveal</code></label> <a class="linkbuilder-help" href="#add-parameter-reveal">?</a> 
+									</div>
+									<div>
+										<label><code>list names</code></label> <a class="linkbuilder-help" href="#add-parameter-notes">?</a>
+										<div>
+										<textarea name="listNames" id="listNames" placeholder=""></textarea>
+										</div>
+										<button type="button" onclick="saveListNames()">Save</button> 
 									</div>
 									<div class="linkbuilder-row">
 										<label><code>auth-token</code></label> <a class="linkbuilder-help" href="#add-parameter-auth-token">?</a> 
