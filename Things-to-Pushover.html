@@ -1,4 +1,3 @@
-
  
 <!DOCTYPE html>
 <html>
@@ -119,231 +118,231 @@
 				padding-bottom: 40px
 			}
 			.tooltip
-{
-	display: inline-block;
-	position: relative;
-	cursor: pointer;
-	color: #2474e5;
-	text-decoration: none;
-}
-
-.tooltip:hover { text-decoration: underline; }
-
-.tooltip-bubble
-{
-	display: block;
-	width: 200px;
-	padding: 13px 14px 15px 14px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10000;
-	font-family: -apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',sans-serif;
-	font-size: 14px;
-	line-height: 1.25;
-	font-weight: 400;
-	text-decoration: none;
-	color: #303336;
-	background: #fff;
-	border: 1px solid rgba(0,0,0,.1);
-	border-radius: 6px;
-	box-shadow: 0 2px 8px rgba(0,0,0,.15);
-	-webkit-background-clip: padding-box;
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-transition: opacity .1s ease-out,-webkit-transform .1s ease-out;
-	-moz-transition: opacity .1s ease-out,-moz-transform .1s ease-out;
-	-ms-transition: opacity .1s ease-out,-ms-transform .1s ease-out;
-	transition: opacity .1s ease-out,transform .1s ease-out;
-}
-
-.tooltip-bubble
-{
-	visibility: hidden;
-	opacity: 0;
-	-webkit-transform: translate(0,16px) scale(.9);
-	-moz-transform: translate(0,16px) scale(.9);
-	-ms-transform: translate(0,16px) scale(.9);
-	transform: translate(0,16px) scale(.9);
-}
-
-.browser-is-click .tooltip-bubble:hover,.tooltip-bubble.is-visible
-{
-	visibility: visible;
-	opacity: 1;
-	-webkit-transform: translate(0,0) scale(1);
-	-moz-transform: translate(0,0) scale(1);
-	-ms-transform: translate(0,0) scale(1);
-	transform: translate(0,0) scale(1);
-}
-
-.tooltip-bubble.is-large,.tooltip-bubble.style-large { width: 300px; }
-
-.tooltip-bubble a
-{
-	color: #2474e5;
-	text-decoration: none;
-}
-
-.tooltip-bubble a:hover { text-decoration: underline; }
+		{
+			display: inline-block;
+			position: relative;
+			cursor: pointer;
+			color: #2474e5;
+			text-decoration: none;
+		}
+		
+		.tooltip:hover { text-decoration: underline; }
+		
+		.tooltip-bubble
+		{
+			display: block;
+			width: 200px;
+			padding: 13px 14px 15px 14px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 10000;
+			font-family: -apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',sans-serif;
+			font-size: 14px;
+			line-height: 1.25;
+			font-weight: 400;
+			text-decoration: none;
+			color: #303336;
+			background: #fff;
+			border: 1px solid rgba(0,0,0,.1);
+			border-radius: 6px;
+			box-shadow: 0 2px 8px rgba(0,0,0,.15);
+			-webkit-background-clip: padding-box;
+			-moz-background-clip: padding;
+			background-clip: padding-box;
+			-webkit-transition: opacity .1s ease-out,-webkit-transform .1s ease-out;
+			-moz-transition: opacity .1s ease-out,-moz-transform .1s ease-out;
+			-ms-transition: opacity .1s ease-out,-ms-transform .1s ease-out;
+			transition: opacity .1s ease-out,transform .1s ease-out;
+		}
+		
+		.tooltip-bubble
+		{
+			visibility: hidden;
+			opacity: 0;
+			-webkit-transform: translate(0,16px) scale(.9);
+			-moz-transform: translate(0,16px) scale(.9);
+			-ms-transform: translate(0,16px) scale(.9);
+			transform: translate(0,16px) scale(.9);
+		}
+		
+		.browser-is-click .tooltip-bubble:hover,.tooltip-bubble.is-visible
+		{
+			visibility: visible;
+			opacity: 1;
+			-webkit-transform: translate(0,0) scale(1);
+			-moz-transform: translate(0,0) scale(1);
+			-ms-transform: translate(0,0) scale(1);
+			transform: translate(0,0) scale(1);
+		}
+		
+		.tooltip-bubble.is-large,.tooltip-bubble.style-large { width: 300px; }
+		
+		.tooltip-bubble a
+		{
+			color: #2474e5;
+			text-decoration: none;
+		}
+		
+		.tooltip-bubble a:hover { text-decoration: underline; }
 	</style>
 </head>
 <body>
 <script>
-    function createPush()
-	{
-		// get the To-Do tile
-		var name = document.getElementsByClassName("linkbuilder-field")[0].value
-
-		// get the URL
-		var url = document.getElementsByClassName("linkbuilder-output")[0].getElementsByTagName('a')[0].href;
-
-		// create XMLHttpRequest request
-		var xhr = new XMLHttpRequest()
-
-		xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-		var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do') + encodeURI(name) + '&message=' + encodeURI(name) + '&url=' + encodeURIComponent(url) + '&url_title=Create To-Do'	
-		xhr.send(json)
-	}
+	function createPush()
+		{
+			// get the To-Do tile
+			var name = document.getElementsByClassName("linkbuilder-field")[0].value
+	
+			// get the URL
+			var url = document.getElementsByClassName("linkbuilder-output")[0].getElementsByTagName('a')[0].href;
+	
+			// create XMLHttpRequest request
+			var xhr = new XMLHttpRequest()
+	
+			xhr.open("POST", "https://api.pushover.net/1/messages.json", false)
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+			var json = 'token=aej64vqn71y2ypyrgbwvwxjpgajxem&user=' + getAuthToken('pushover-user-token') + ' &title=' + encodeURI('New Things To-Do') + encodeURI(name) + '&message=' + encodeURI(name) + '&url=' + encodeURIComponent(url) + '&url_title=Create To-Do'	
+			xhr.send(json)
+		}
+			
+		function saveAuthToken(tokenType)
+		{
+				// store token in local storage
+				var authtoken;
+				if (tokenType == "auth-token")
+				{
+					var authtoken = document.getElementById("auth-token").value;
+					window.localStorage.setItem("auth-token", authtoken);
+				}
+				else
+				{
+					var authtoken = document.getElementById("pushover-user-token").value;
+					window.localStorage.setItem("pushover-user-token", authtoken);
+				}
+				
+				//console.log('saving ' + tokenType + ' :' + authtoken);		
+		}
 		
-	function saveAuthToken(tokenType)
-	{
-			// store token in local storage
+		function getAuthToken(tokenType)
+		{
 			var authtoken;
 			if (tokenType == "auth-token")
 			{
-				var authtoken = document.getElementById("auth-token").value;
-				window.localStorage.setItem("auth-token", authtoken);
+				// retrieve token from local storage
+				authtoken = window.localStorage.getItem('auth-token');
 			}
 			else
 			{
-				var authtoken = document.getElementById("pushover-user-token").value;
-				window.localStorage.setItem("pushover-user-token", authtoken);
+				// retrieve token from local storage
+				authtoken = window.localStorage.getItem('pushover-user-token');
+			}
+	
+			//console.log('retrieving ' + tokenType + ' :' + authtoken);		
+			return authtoken		
+		}
+			
+		var linkbuilder = {
+			
+			init: function(elements) {	
+				for (var i=0; i<elements.length; ++i) {
+					// General
+					var element = elements.eq(i);
+					if (element.hasClass('is-initialized')) { return; }
+					element.addClass('is-initialized');
+		
+					// Help
+					var helps = element.find('.linkbuilder-help');
+					for (var j=0; j<helps.length; ++j) {
+						var help = helps.eq(j);
+						var linkedDtElement = $(help.attr('href'));
+						var linkedDdElement = linkedDtElement.next();
+						var newElement = $('<span class="linkbuilder-help tooltip" title="'+linkedDdElement.text()+'">'+help.text()+'</span>');
+						help.replaceWith(newElement);
+					}
+					helps = element.find('.linkbuilder-help')
+					tooltip.init(helps);
+					
+					// Form and Link Generator
+					var textfieldsAndCheckboxes = element.find('.linkbuilder-field, .linkbuilder-checkbox');
+					var commands = element.find('.linkbuilder-command');
+					textfieldsAndCheckboxes.on('input change', $.proxy(function(event) {
+						var command = $(event.currentTarget).closest('.linkbuilder-command');
+						this.update(command);
+					}, this));
+					
+					// ff auth tokens are in the URL get from URL else get from storage
+					// Assuming "?post=1234&action=edit"
+					var urlParams = new URLSearchParams(window.location.search);
+			
+					//console.log(urlParams.has('auth-token'));
+					if (urlParams.has('auth-token')) // true
+					{
+						document.getElementById("auth-token").value = urlParams.get('auth-token')
+					}
+					else
+					{
+						// Retrieve the auth token from local storage and set it
+						document.getElementById("auth-token").value = getAuthToken('auth-token');
+					}
+					
+					//console.log(urlParams.has('pushover-user-token'));
+					if (urlParams.has('pushover-user-token')) // true
+					{
+						document.getElementById("pushover-user-token").value = urlParams.get('pushover-user-token')
+					}
+					else
+					{
+						// Retrieve the auth token from local storage and set it
+						document.getElementById("pushover-user-token").value = getAuthToken('pushover-user-token');
+					}
+				
+				    this.update(commands);				
+				}
+			},
+								
+			update: function(commandElements) {
+				for (var i=0; i<commandElements.length; ++i) {
+					var link = this.createLink(commandElements.eq(i));
+					var output = commandElements.eq(i).find('.linkbuilder-output').eq(0);
+					if (output.html() !== link) {
+						/* only change DOM if necessary, otherwise clicking the link doesn’t work directly, while you’re still making changes in a textfield (clicking outside the textfield fires a 'change' event, and if that changes the DOM, the link doesn’t work) */
+						output.html(link);					
+					}
+				}
+		
+			},
+			
+			createLink: function(commandElement) {
+				var command = commandElement.data('command');
+				var fields = commandElement.find('.linkbuilder-field');
+				var checkboxes = commandElement.find('.linkbuilder-checkbox');
+				var parameters = [];
+				for (var i=0; i<fields.length; ++i) {
+					if (fields[i].value) {
+						parameters.push(fields[i].name+'='+encodeURIComponent(fields[i].value));
+					}
+				}
+				for (var i=0; i<checkboxes.length; ++i) {
+					var parameterIsTrueByDefault = false; /* currently no parameter is true by default */
+					var parameterNeedsToBeSet = (checkboxes[i].checked) || (parameterIsTrueByDefault && checkboxes[i].checked === false);
+					if (parameterNeedsToBeSet) {
+						parameters.push(checkboxes[i].name+'='+checkboxes[i].checked);
+					}
+				}
+				var authtoken = document.getElementById("auth-token").value;										
+				var url = 'things:///'+command+'?'+parameters.join('&amp;');
+				var hiddenUrl = url + '&amp;' + 'auth-token=' + authtoken
+				return output = '<a href="'+hiddenUrl+'">'+url+'</a>';
 			}
 			
-			//console.log('saving ' + tokenType + ' :' + authtoken);		
-	}
-	
-	function getAuthToken(tokenType)
-	{
-		var authtoken;
-		if (tokenType == "auth-token")
-		{
-			// retrieve token from local storage
-			authtoken = window.localStorage.getItem('auth-token');
-		}
-		else
-		{
-			// retrieve token from local storage
-			authtoken = window.localStorage.getItem('pushover-user-token');
-		}
-
-		//console.log('retrieving ' + tokenType + ' :' + authtoken);		
-		return authtoken		
-	}
-		
-	var linkbuilder = {
-		
-		init: function(elements) {	
-			for (var i=0; i<elements.length; ++i) {
-				// General
-				var element = elements.eq(i);
-				if (element.hasClass('is-initialized')) { return; }
-				element.addClass('is-initialized');
-	
-				// Help
-				var helps = element.find('.linkbuilder-help');
-				for (var j=0; j<helps.length; ++j) {
-					var help = helps.eq(j);
-					var linkedDtElement = $(help.attr('href'));
-					var linkedDdElement = linkedDtElement.next();
-					var newElement = $('<span class="linkbuilder-help tooltip" title="'+linkedDdElement.text()+'">'+help.text()+'</span>');
-					help.replaceWith(newElement);
-				}
-				helps = element.find('.linkbuilder-help')
-				tooltip.init(helps);
-				
-				// Form and Link Generator
-				var textfieldsAndCheckboxes = element.find('.linkbuilder-field, .linkbuilder-checkbox');
-				var commands = element.find('.linkbuilder-command');
-				textfieldsAndCheckboxes.on('input change', $.proxy(function(event) {
-					var command = $(event.currentTarget).closest('.linkbuilder-command');
-					this.update(command);
-				}, this));
-				
-				// ff auth tokens are in the URL get from URL else get from storage
-				// Assuming "?post=1234&action=edit"
-				var urlParams = new URLSearchParams(window.location.search);
-		
-				//console.log(urlParams.has('auth-token'));
-				if (urlParams.has('auth-token')) // true
-				{
-					document.getElementById("auth-token").value = urlParams.get('auth-token')
-				}
-				else
-				{
-					// Retrieve the auth token from local storage and set it
-					document.getElementById("auth-token").value = getAuthToken('auth-token');
-				}
-				
-				//console.log(urlParams.has('pushover-user-token'));
-				if (urlParams.has('pushover-user-token')) // true
-				{
-					document.getElementById("pushover-user-token").value = urlParams.get('pushover-user-token')
-				}
-				else
-				{
-					// Retrieve the auth token from local storage and set it
-					document.getElementById("pushover-user-token").value = getAuthToken('pushover-user-token');
-				}
-			
-			    this.update(commands);				
-			}
-		},
-							
-		update: function(commandElements) {
-			for (var i=0; i<commandElements.length; ++i) {
-				var link = this.createLink(commandElements.eq(i));
-				var output = commandElements.eq(i).find('.linkbuilder-output').eq(0);
-				if (output.html() !== link) {
-					/* only change DOM if necessary, otherwise clicking the link doesn’t work directly, while you’re still making changes in a textfield (clicking outside the textfield fires a 'change' event, and if that changes the DOM, the link doesn’t work) */
-					output.html(link);					
-				}
-			}
-	
-		},
-		
-		createLink: function(commandElement) {
-			var command = commandElement.data('command');
-			var fields = commandElement.find('.linkbuilder-field');
-			var checkboxes = commandElement.find('.linkbuilder-checkbox');
-			var parameters = [];
-			for (var i=0; i<fields.length; ++i) {
-				if (fields[i].value) {
-					parameters.push(fields[i].name+'='+encodeURIComponent(fields[i].value));
-				}
-			}
-			for (var i=0; i<checkboxes.length; ++i) {
-				var parameterIsTrueByDefault = false; /* currently no parameter is true by default */
-				var parameterNeedsToBeSet = (checkboxes[i].checked) || (parameterIsTrueByDefault && checkboxes[i].checked === false);
-				if (parameterNeedsToBeSet) {
-					parameters.push(checkboxes[i].name+'='+checkboxes[i].checked);
-				}
-			}
-			var authtoken = document.getElementById("auth-token").value;										
-			var url = 'things:///'+command+'?'+parameters.join('&amp;');
-			var hiddenUrl = url + '&amp;' + 'auth-token=' + authtoken
-			return output = '<a href="'+hiddenUrl+'">'+url+'</a>';
 		}
 		
-	}
-	
-	if (typeof queue !== 'undefined') {
-		queue.push(function() {
-			linkbuilder.init($('.linkbuilder'));
-		});
-	}
+		if (typeof queue !== 'undefined') {
+			queue.push(function() {
+				linkbuilder.init($('.linkbuilder'));
+			});
+		}
 </script>
 <div class="page">
 	<div class="slice for-article">
@@ -356,11 +355,6 @@
 					<div class="linkbuilder-frame">
 						<div class="linkbuilder-pane">
 							<div class="linkbuilder-command" data-command="add">
-							<!--
-								<div class="linkbuilder-output">
-									things:///... 
-								</div>
-							-->
 								<div>
 									<button type="button" onclick="createPush()">Send to Pushover</button> 
 								</div>
@@ -371,7 +365,7 @@
 									<div class="linkbuilder-row">
 										<label><code>title</code></label> <a class="linkbuilder-help" href="#add-parameter-title">?</a> / <label><code>titles</code></label> <a class="linkbuilder-help" href="#add-parameter-titles">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="title" placeholder="a title" type="text" />
-										<!--
+<!--
 										<textarea class="linkbuilder-field" name="titles" placeholder="or multiple to-do titles separated by new lines"></textarea>
 										-->
 									</div>
@@ -402,7 +396,7 @@
 										<label><code>heading</code></label> <a class="linkbuilder-help" href="#add-parameter-heading">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="heading" placeholder="" type="text" />
 									</div>
-									<!--
+<!--
 									<div class="linkbuilder-row">
 										<label><code>creation-date</code></label> <a class="linkbuilder-help" href="#add-parameter-creation-date">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="creation-date" placeholder="" type="text" />
@@ -414,7 +408,7 @@
 									</div>
 									-->
 									<div class="linkbuilder-row">
-										<!--
+<!--
 										<label> 
 										<input class="linkbuilder-checkbox" name="completed" type="checkbox" />
 										<code>completed</code></label> <a class="linkbuilder-help" href="#add-parameter-completed">?</a> or <label> 
@@ -445,6 +439,9 @@
 				</div>
 			</div>
 			<div style="visibility: hidden">
+			<div class="linkbuilder-output">
+				things:///... 
+			</div>
 				<dl> 
 					<dt id="add-parameter-title"><code>title</code></dt>
 					<dd>String. The title of the to-do to add. Ignored if <code>titles</code> is also specified.</dd>
