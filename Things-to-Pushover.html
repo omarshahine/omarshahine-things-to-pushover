@@ -402,7 +402,7 @@
 								</div>
 								<div class="linkbuilder-form">
 									<div class="linkbuilder-row">
-										<label><code>title</code></label> <a class="linkbuilder-help" href="#add-parameter-title">?</a> / <label><code>titles</code></label> <a class="linkbuilder-help" href="#add-parameter-titles">?</a> 
+										<label><code>title</code></label> <a class="linkbuilder-help" href="#add-parameter-title">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="title" placeholder="a title" type="text" />
 <!--
 										<textarea class="linkbuilder-field" name="titles" placeholder="or multiple to-do titles separated by new lines"></textarea>
@@ -432,22 +432,24 @@
 										
 										<input autocomplete="off" class="linkbuilder-field" name="list-id" placeholder="or ID" type="text" />
 										-->
-										<label><code>Select list</code></label>
+										<label><code>select list </code></label><a class="linkbuilder-help" href="#add-parameter-list-name">?</a>
 										<p>
 										 <select id = "listNamesMenu" class="linkbuilder-field" name="list">
 										 </select>
 										 </p>
 									</div>
 									<div class="linkbuilder-row">
+									<h2>Settings</h2>
+									
+									</div>
+<!--									<div class="linkbuilder-row">
 										<label><code>heading</code></label> <a class="linkbuilder-help" href="#add-parameter-heading">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="heading" placeholder="" type="text" />
 									</div>
-<!--
 									<div class="linkbuilder-row">
 										<label><code>creation-date</code></label> <a class="linkbuilder-help" href="#add-parameter-creation-date">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="creation-date" placeholder="" type="text" />
 									</div>
-									
 									<div class="linkbuilder-row">
 										<label><code>completion-date</code></label> <a class="linkbuilder-help" href="#add-parameter-completion-date">?</a> 
 										<input autocomplete="off" class="linkbuilder-field" name="completion-date" placeholder="" type="text" />
@@ -469,9 +471,9 @@
 										<code>reveal</code></label> <a class="linkbuilder-help" href="#add-parameter-reveal">?</a> 
 									</div>
 									<div>
-										<label><code>list names</code></label> <a class="linkbuilder-help" href="#add-parameter-notes">?</a>
+										<label><code>list names</code></label> <a class="linkbuilder-help" href="#add-parameter-list-name-settings">?</a>
 										<div>
-										<textarea name="listNames" id="listNames" placeholder=""></textarea>
+										<textarea name="listNames" id="listNames" class="linkbuilder-field" placeholder="separated by new lines"></textarea>
 										</div>
 										<button type="button" onclick="saveListNames()">Save</button> 
 									</div>
@@ -516,6 +518,10 @@
 					<dd>String. The ID of a project or area to add to. Takes precedence over <code>list</code>.</dd>
 					<dt id="add-parameter-list"><code>list</code></dt>
 					<dd>String. The title of a project or area to add to. Ignored if <code>list-id</code> is present.</dd>
+					<dt id="add-parameter-list-name"><code>list</code></dt>
+					<dd>String. The name of the list of a project or area to add to. You must enter the lists you wish to use in the list settings and save.</dd>
+					<dt id="add-parameter-list-name-settings"><code>list</code></dt>
+					<dd>Array of String. Enter each list name from things. One per row and click save. These will be saved and then shows in the menu above</dd>
 					<dt id="add-parameter-heading"><code>heading</code></dt>
 					<dd>String. The title of a heading within a project to add to. Ignored if a project is not specified, or if the heading doesn&#39;t exist.</dd>
 					<dt id="add-parameter-completed"><code>completed</code></dt>
