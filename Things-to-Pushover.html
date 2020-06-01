@@ -254,7 +254,12 @@
 		function getListNames()
 		{
 			var listNames = JSON.parse(localStorage.getItem("lists"));
-			return listNames.split("\n")
+			if (listNames != null) // true
+			{
+				return listNames.split("\n")
+			}
+			
+			return "";
 		}
 			
 		var linkbuilder = {
@@ -286,8 +291,12 @@
 						this.update(command);
 					}, this));
 					
-					// ff auth tokens are in the URL get from URL else get from storage
+					// if auth tokens are in the URL get from URL else get from storage
 					// Assuming "?post=1234&action=edit"
+					// javascript:siteName=encodeURI(document.title);
+					// siteUrl=encodeURI(location.href);
+					// window.location.href='https://omarshahine.github.io/things-to-pushover/Things-to-Pushover.html?auth-token=[auth-token]&pushover-user-token=[pushover-user-token]&title=' + siteName + '&amp;notes=' + siteUrl
+					
 					var urlParams = new URLSearchParams(window.location.search);
 			
 					//console.log(urlParams.has('auth-token'));
@@ -311,7 +320,17 @@
 						// Retrieve the auth token from local storage and set it
 						document.getElementById("pushover-user-token").value = getAuthToken('pushover-user-token');
 					}
-				
+
+					if (urlParams.has('title')) // true
+					{
+						document.getElementById("title").value = urlParams.get('title')
+
+						if (urlParams.get('title').length > 0 && urlParams.has('notes')) // true
+						{
+							document.getElementById("notes").value = urlParams.get('notes')
+						}
+					}
+
 					document.getElementById("listNames").value = JSON.parse(localStorage.getItem("lists"));
 					
 					let dropdown = document.getElementById('listNamesMenu');
@@ -324,7 +343,7 @@
 					dropdown.selectedIndex = 0;
 
 					var data = getListNames();
-					console.log(data)
+					
 					let option;
 					for (let i = 0; i < data.length; i++) {
 						console.log(data[i])
@@ -403,13 +422,13 @@
 								<div class="linkbuilder-form">
 									<div class="linkbuilder-row">
 										<label><code>title</code></label> <a class="linkbuilder-help" href="#add-parameter-title">?</a> 
-										<input autocomplete="off" class="linkbuilder-field" name="title" placeholder="a title" type="text" />
+										<input autocomplete="off" class="linkbuilder-field" name="title" id="title" placeholder="a title" type="text" />
 <!--
 										<textarea class="linkbuilder-field" name="titles" placeholder="or multiple to-do titles separated by new lines"></textarea>
 										-->
 									</div>
 									<div class="linkbuilder-row">
-										<label><code>notes</code></label> <a class="linkbuilder-help" href="#add-parameter-notes">?</a><textarea class="linkbuilder-field" name="notes" placeholder=""></textarea>
+										<label><code>notes</code></label> <a class="linkbuilder-help" href="#add-parameter-notes">?</a><textarea class="linkbuilder-field" name="notes" id="notes" placeholder=""></textarea>
 									</div>
 									<div class="linkbuilder-row">
 										<label><code>checklist-items</code></label> <a class="linkbuilder-help" href="#add-parameter-checklist-items">?</a><textarea class="linkbuilder-field" name="checklist-items" placeholder="separated by new lines"></textarea>
