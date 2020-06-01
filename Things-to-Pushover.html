@@ -295,10 +295,10 @@
 					// Assuming "?post=1234&action=edit"
 					// javascript:siteName=encodeURI(document.title);
 					// siteUrl=encodeURI(location.href);
-					// window.location.href='https://omarshahine.github.io/things-to-pushover/Things-to-Pushover.html?auth-token=[auth-token]&pushover-user-token=[pushover-user-token]&title=' + siteName + '&amp;notes=' + siteUrl
+					// window.location.href='https://omarshahine.github.io/things-to-pushover/Things-to-Pushover.html?auth-token=[auth-token]&pushover-user-token=[pushover-user-token]&title=' + siteName + '&notes=' + siteUrl
 					
 					var urlParams = new URLSearchParams(window.location.search);
-			
+					
 					//console.log(urlParams.has('auth-token'));
 					if (urlParams.has('auth-token')) // true
 					{
@@ -324,7 +324,7 @@
 					if (urlParams.has('title')) // true
 					{
 						document.getElementById("title").value = urlParams.get('title')
-
+						
 						if (urlParams.get('title') != "" & urlParams.has('notes')) // true
 						{
 							document.getElementById("notes").value = urlParams.get('notes')
