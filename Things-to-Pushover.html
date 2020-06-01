@@ -325,7 +325,7 @@
 					{
 						document.getElementById("title").value = urlParams.get('title')
 
-						if (urlParams.get('title') != null && urlParams.has('notes')) // true
+						if (urlParams.get('title') != "" & urlParams.has('notes')) // true
 						{
 							document.getElementById("notes").value = urlParams.get('notes')
 						}
