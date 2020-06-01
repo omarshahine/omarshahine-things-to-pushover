@@ -321,7 +321,7 @@
 						document.getElementById("pushover-user-token").value = getAuthToken('pushover-user-token');
 					}
 
-					if (urlParams.has('title')) // true
+					if (urlParams.has('title') & urlParams.get('title') != 'Add To-Do to Things') // true
 					{
 						document.getElementById("title").value = urlParams.get('title')
 						
