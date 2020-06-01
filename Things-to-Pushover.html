@@ -246,8 +246,8 @@
 		{
 			var lists = [];
 			var listNames = document.getElementById("listNames").value;
-			console.log(listNames);
-			console.log(JSON.stringify(listNames));
+			//console.log(listNames);
+			//console.log(JSON.stringify(listNames));
 			localStorage.setItem("lists", JSON.stringify(listNames));
 		}
 		
@@ -325,7 +325,7 @@
 					{
 						document.getElementById("title").value = urlParams.get('title')
 
-						if (urlParams.get('title').length > 0 && urlParams.has('notes')) // true
+						if (urlParams.get('title') != null && urlParams.has('notes')) // true
 						{
 							document.getElementById("notes").value = urlParams.get('notes')
 						}
